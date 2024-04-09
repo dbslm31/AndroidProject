@@ -34,7 +34,7 @@ public class ApiServices {
         private static final String URL_END_API_KEY = "&api_key=";
         private static final String API_KEY = "live_Vd2XNWnMBpWTsjoBUOyEmmJ0xVCGtxQsVgdaW6FPD6cputraAjpNw9tTqkcFmtlF";
         private static final String URL_API_VOTE = "https://api.thecatapi.com/v1/votes";
-        private static final String URL_API_FAVOURITE = "https://api.thecatapi.com/v1/favourites"
+        private static final String URL_API_FAVOURITE = "https://api.thecatapi.com/v1/favourites";
 
         //Fetch random cat images and information
         public void getRandomCatImage(Context context, Response.ErrorListener errorListener) {
@@ -192,7 +192,7 @@ public class ApiServices {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         //On doit définir favouriteId en le récupérant dans la réponse de AddFavourite
-        String url = URL_API_FAVOURITE + "/" favouriteId;
+        String url = URL_API_FAVOURITE + "/" + favouriteId;
 
         StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url, responseListener, errorListener) {
 
