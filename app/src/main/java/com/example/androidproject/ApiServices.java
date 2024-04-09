@@ -29,7 +29,7 @@ import java.util.List;
         private static final String URL_END_BREEDS = "?has_breeds=1";
         private static final String API_KEY = "&api_key=live_Vd2XNWnMBpWTsjoBUOyEmmJ0xVCGtxQsVgdaW6FPD6cputraAjpNw9tTqkcFmtlF";
 
-        public void getRandomCatImage(Context context, Response.ErrorListener errorListener) {
+        public static void getRandomCatImage(Context context, Response.ErrorListener errorListener) {
             RequestQueue queue = Volley.newRequestQueue(context);
 
             StringRequest request = new StringRequest(Request.Method.GET, URL_API_SEARCH_IMAGE + URL_END_BREEDS + API_KEY,
