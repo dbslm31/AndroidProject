@@ -15,6 +15,7 @@ public class Cat implements Serializable {
     private int energyLevel;
     private int intelligence;
     private int socialNeeds;
+    private String favouriteId;
 
     public int getId() {
         return id;
@@ -102,6 +103,13 @@ public class Cat implements Serializable {
 
     public void setSocialNeeds(int social_needs) {
         this.socialNeeds = socialNeeds;
+    }
+
+    public String getFavouriteId() {
+        return favouriteId;
+    }
+    public void setFavouriteId(String favouriteId) {
+        this.favouriteId = favouriteId;
     }
 
 }
