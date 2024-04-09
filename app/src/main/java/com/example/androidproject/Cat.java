@@ -4,12 +4,31 @@ import java.io.Serializable;
 
 public class Cat implements Serializable {
 
+    private int id;
+    private String url;
+    private  String name;
+    private String origin;
+    private int adaptability;
+    private int affection_level;
+    private int child_friendly;
+    private int energy_level;
+    private int intelligence;
+    private int social_needs;
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getName() {
@@ -75,15 +94,5 @@ public class Cat implements Serializable {
     public void setSocial_needs(int social_needs) {
         this.social_needs = social_needs;
     }
-
-    private int id;
-    private  String name;
-    private String origin;
-    private int adaptability;
-    private int affection_level;
-    private int child_friendly;
-    private int energy_level;
-    private int intelligence;
-    private int social_needs;
 
 }
