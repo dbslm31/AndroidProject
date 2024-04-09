@@ -166,6 +166,7 @@ public class ApiServices {
         queue.add(jsonObjectRequest);
     }
 
+    //Get all favourites
     public void getFavourites(Context context, String subId, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = URL_API_FAVOURITE;
@@ -186,8 +187,11 @@ public class ApiServices {
         queue.add(stringRequest);
     }
 
+    //Delete Favourite
     public void deleteFavourite(Context context, int favouriteId, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
+
+        //On doit définir favouriteId en le récupérant dans la réponse de AddFavourite
         String url = URL_API_FAVOURITE + "/" favouriteId;
 
         StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url, responseListener, errorListener) {
