@@ -158,7 +158,7 @@ public class ApiServices {
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("x-api-key", "YOUR-API-KEY");
+                headers.put("x-api-key", API_KEY);
                 return headers;
             }
         };
