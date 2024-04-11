@@ -23,42 +23,37 @@ public class CatActivity extends AppCompatActivity
 
     private ImageView imageView;
 
-    private ListView listView;
-    private CatAdapter adapter;
-    private ArrayList<Cat> cats;
+
+
+    private Cat cat;
 
 
 
-    private TextView textViewName, textViewCirco, textViewEmail, textViewGroupe;
+    private TextView textView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Cat cat= (Cat) getIntent().getSerializableExtra("cat");
-        String catName = cat.getName();
-        ApiServices.getRandomCatImage(this, (Response.ErrorListener) this);
-        //setContentView(R.layout.activity_deputy);
-        //textViewName= findViewById(R.id.textViewDeputyName);
-
-
-
-
-
-        adapter= new CatAdapter(cats, this);
-        listView.setAdapter(adapter);
-        Log.d("lol","test");
-
-
-
-
+        setContentView(R.layout.activity_cat);
+        textView = findViewById(R.id.textViewCatFact);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Cat cat= (Cat) getIntent().getSerializableExtra("cat");
-       // textViewName.setText(cat.getName());
+        textView = findViewById(R.id.textViewCatFact);
+        textView.setText("Name: "+ cat.getName()+"\n"+
+                        "Origin: " + cat.getOrigin()+"\n"+
+                        "Adaptability: " + cat.getAdaptability()+"\n"+
+                        "Affection level: " + cat.getAffection_level()+"\n"+
+                        "Child friendly: " + cat.getChild_friendly()+"\n"+
+                        "Intelligence: " + cat.getIntelligence()+"\n"+
+                        "Social needs: " + cat.getSocial_needs()
 
-       // ApiServices.loadCatAvatar(this, cat.getNameForAvatar(), imageView);
+                );
+        imageView = findViewById(R.id.imageViewCat);
+        ApiServices.loadCatAvatar(this, cat, imageView);
     }
 }
 

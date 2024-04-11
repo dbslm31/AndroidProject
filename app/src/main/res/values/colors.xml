@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#FF000000</color>
+    <color name="cream">#F5E5D1</color>
+    <color name="milktea">#D1AA80</color>
+    <color name="coffee">#624628</color>
 </resources>

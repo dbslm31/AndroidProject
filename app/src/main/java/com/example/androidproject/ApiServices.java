@@ -29,7 +29,7 @@ import java.util.List;
         private static final String URL_END_BREEDS = "?has_breeds=1";
         private static final String API_KEY = "&api_key=live_Vd2XNWnMBpWTsjoBUOyEmmJ0xVCGtxQsVgdaW6FPD6cputraAjpNw9tTqkcFmtlF";
 
-        public static void getRandomCatImage(Context context, Response.ErrorListener errorListener) {
+        public static void getRandomCatImage(Context context, CatObserver listener) {
             RequestQueue queue = Volley.newRequestQueue(context);
 
             StringRequest request = new StringRequest(Request.Method.GET, URL_API_SEARCH_IMAGE + URL_END_BREEDS + API_KEY,
@@ -57,13 +57,37 @@ import java.util.List;
                                     cat.setEnergy_level(breedsInfo.optInt("energy_level", 0));
                                     cat.setIntelligence(breedsInfo.optInt("intelligence", 0));
                                     cat.setSocial_needs(breedsInfo.optInt("social_needs", 0));
+                                    listener.onReceiveCatInfo(cat);
                                 }
                             }
                         } catch (JSONException e) {
                             Log.e("ApiServices", "JSON parsing error: " + e.getMessage());
                         }
-                    }, errorListener);
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+
+                }
+            });
 
             queue.add(request);
         }
+
+        public static void loadCatAvatar(Context context, Cat cat, final ImageView imageView){
+            RequestQueue queue = Volley.newRequestQueue(context);
+            ImageRequest request = new ImageRequest( cat.getUrl(),
+                    new Response.Listener<Bitmap>() {
+                        @Override
+                        public void onResponse(Bitmap bitmap) {
+                            imageView.setImageBitmap(bitmap);
+                        }
+                    }, 0, 0, null,
+                    new Response.ErrorListener() {
+                        public void onErrorResponse(VolleyError error) {
+                            imageView.setImageResource(android.R.drawable.ic_menu_gallery);
+                        }
+                    });
+            queue.add(request);
+        }
+
     }
