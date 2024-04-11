@@ -5,15 +5,17 @@ import java.io.Serializable;
 public class Cat implements Serializable {
 
     private int id;
+    private String imageId;
     private String url;
     private  String name;
     private String origin;
     private int adaptability;
-    private int affection_level;
-    private int child_friendly;
-    private int energy_level;
+    private int affectionLevel;
+    private int childFriendly;
+    private int energyLevel;
     private int intelligence;
-    private int social_needs;
+    private int socialNeeds;
+    private String favouriteId;
 
     public int getId() {
         return id;
@@ -21,6 +23,14 @@ public class Cat implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public String getUrl() {
@@ -56,27 +66,27 @@ public class Cat implements Serializable {
     }
 
     public int getAffection_level() {
-        return affection_level;
+        return affectionLevel;
     }
 
-    public void setAffection_level(int affection_level) {
-        this.affection_level = affection_level;
+    public void setAffectionLevel(int affection_level) {
+        this.affectionLevel = affection_level;
     }
 
-    public int getChild_friendly() {
-        return child_friendly;
+    public int getChildFriendly() {
+        return childFriendly;
     }
 
-    public void setChild_friendly(int child_friendly) {
-        this.child_friendly = child_friendly;
+    public void setChildFriendly(int childFriendly) {
+        this.childFriendly = childFriendly;
     }
 
-    public int getEnergy_level() {
-        return energy_level;
+    public int getEnergyLevel() {
+        return energyLevel;
     }
 
-    public void setEnergy_level(int energy_level) {
-        this.energy_level = energy_level;
+    public void setEnergyLevel(int energyLevel) {
+        this.energyLevel = energyLevel;
     }
 
     public int getIntelligence() {
@@ -87,12 +97,19 @@ public class Cat implements Serializable {
         this.intelligence = intelligence;
     }
 
-    public int getSocial_needs() {
-        return social_needs;
+    public int getSocialNeeds() {
+        return socialNeeds;
     }
 
-    public void setSocial_needs(int social_needs) {
-        this.social_needs = social_needs;
+    public void setSocialNeeds(int social_needs) {
+        this.socialNeeds = socialNeeds;
+    }
+
+    public String getFavouriteId() {
+        return favouriteId;
+    }
+    public void setFavouriteId(String favouriteId) {
+        this.favouriteId = favouriteId;
     }
 
 

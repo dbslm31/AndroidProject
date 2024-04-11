@@ -47,9 +47,9 @@ public class CatActivity extends AppCompatActivity
                         "Origin: " + cat.getOrigin()+"\n"+
                         "Adaptability: " + cat.getAdaptability()+"\n"+
                         "Affection level: " + cat.getAffection_level()+"\n"+
-                        "Child friendly: " + cat.getChild_friendly()+"\n"+
+                        "Child friendly: " + cat.getChildFriendly()+"\n"+
                         "Intelligence: " + cat.getIntelligence()+"\n"+
-                        "Social needs: " + cat.getSocial_needs()
+                        "Social needs: " + cat.getSocialNeeds()
 
                 );
         imageView = findViewById(R.id.imageViewCat);
