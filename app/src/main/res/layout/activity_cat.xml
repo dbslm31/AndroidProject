@@ -44,6 +44,8 @@
         android:orientation="horizontal"
         android:gravity="center">
         <ImageView
+            android:id="@+id/heart"
+            android:
             android:layout_width="50sp"
             android:layout_height="50sp" />
         <androidx.appcompat.widget.AppCompatButton
