@@ -53,6 +53,7 @@ public class ApiServices {
                                 Cat cat = new Cat();
                                 cat.setImageId(object.getString("id"));
 
+
                                 //Set Cat Images
                                 String imageUrl = object.getString("url");
                                 Log.d("Cat Image URL", imageUrl);
@@ -133,32 +134,38 @@ public class ApiServices {
         queue.add(stringRequest);
     }
 
-    //  Add an image to favourites
+    // Add an image to favourites
     public void addFavourite(Context context, String imageId, String subId, Response.Listener<JSONObject> responseListener, Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = URL_API_FAVOURITE;
         JSONObject body = new JSONObject();
         try {
-            /* Si on a le temps de faire l'authentification
-             * le body de requête sera
-             * body.put("image_id", imageId);
-             * body.put("sub_id", subId);
-             * avec subId = Id de l'utilisateur */
-
             body.put("image_id", imageId);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, body, responseListener, errorListener) {
-
-
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, body,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            int favouriteId = response.getInt("id");
+                            Log.d("AddFavourite", "Favourite ID: " + favouriteId);
+                            responseListener.onResponse(response); // Pass the response to the original listener
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            errorListener.onErrorResponse(new VolleyError("JSON parsing error", e)); // Handle JSON parsing error
+                        }
+                    }
+                },
+                errorListener) {
 
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("x-api-key", API_KEY);
+                headers.put("x-api-key", "YOUR-API-KEY");
                 return headers;
             }
         };
