@@ -65,6 +65,7 @@
             android:backgroundTint="@color/coffee"
             android:text="Favoris"
             android:layout_gravity="end|center"
-            android:layout_margin="25sp" />
+            android:layout_margin="25sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>
