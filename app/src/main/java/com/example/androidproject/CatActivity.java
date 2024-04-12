@@ -18,7 +18,7 @@ import com.android.volley.Response;
 
 import java.util.ArrayList;
 
-public class CatActivity extends AppCompatActivity implements View.OnClickListener {
+public class CatActivity extends AppCompatActivity implements View.OnClickListener, CatObserver {
 
     private ImageView imageView;
     Button catButton, favButton;
@@ -67,10 +67,11 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if(v==catButton){
-            finish();
+            /*finish();
             ApiServices.getRandomCatImage(this, (CatObserver) this);
             Intent i = new Intent(getApplicationContext(),CatActivity.class);
-            startActivity(i);
+            startActivity(i);*/
+            ApiServices.getRandomCatImage(this, this);
         }
 
          else if(v==favButton){
@@ -78,10 +79,23 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
             startActivity(i);
         }
          else if(v==heartButton){
-            //ApiServices.getFavourites(this,this,this,this);
+
         }
     }
 
 
+    @Override
+    public void onReceiveCatInfo(Cat cat) {
+        textView.setText("Name: "+ cat.getName()+"\n"+
+                "Origin: " + cat.getOrigin()+"\n"+
+                "Adaptability: " + cat.getAdaptability()+"\n"+
+                "Affection level: " + cat.getAffection_level()+"\n"+
+                "Child friendly: " + cat.getChildFriendly()+"\n"+
+                "Intelligence: " + cat.getIntelligence()+"\n"+
+                "Social needs: " + cat.getSocialNeeds()
+
+        );
+        ApiServices.loadCatAvatar(this, cat, imageView);
+    }
 }
 

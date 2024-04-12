@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CatActivity"></activity>
+        <activity android:name=".FavCatActivity"></activity>
     </application>
 
 </manifest>

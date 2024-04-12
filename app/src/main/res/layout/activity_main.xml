@@ -18,12 +18,13 @@
         android:gravity="center"
 
         />
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/favcat"
         android:layout_width="100sp"
         android:layout_height="50sp"
         android:backgroundTint="@color/coffee"
         android:text="Favoris"
+        android:textColor="@color/white"
         android:layout_gravity="center"
         android:layout_marginTop="25sp" />
     <LinearLayout
@@ -46,7 +47,7 @@
             android:id="@+id/randomCatBut"
             android:layout_width="125sp"
             android:layout_height="50sp"
-            android:text="To change"
+            android:text="Nouveau Chat"
             android:background="@color/coffee"
             android:backgroundTint="@color/coffee"
             android:textColor="@color/white"
