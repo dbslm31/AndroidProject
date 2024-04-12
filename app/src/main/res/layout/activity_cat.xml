@@ -21,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="230sp"
         android:text="Cats and tea"
-        android:background="@color/milktea"
         android:textColor="@color/coffee"
         android:gravity="center"
         android:layout_margin="40sp"
@@ -30,6 +29,7 @@
         android:id="@+id/textViewCatFact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:layout_weight="2"
         android:textColor="@color/coffee"
         android:textSize="15sp"
@@ -43,6 +43,8 @@
         android:orientation="horizontal"
         android:gravity="center">
         <ImageView
+            android:id="@+id/heart"
+            android:src="@drawable/redheart"
             android:layout_width="50sp"
             android:layout_height="50sp" />
         <androidx.appcompat.widget.AppCompatButton
