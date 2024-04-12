@@ -60,5 +60,12 @@
             android:layout_marginTop="50sp"
             android:layout_marginBottom="50sp"
             />
+        <Button
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:backgroundTint="@color/coffee"
+            android:text="Favoris"
+            android:layout_gravity="end|center"
+            android:layout_margin="25sp" />
     </LinearLayout>
 </LinearLayout>
