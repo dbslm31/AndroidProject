@@ -37,7 +37,7 @@ public class ApiServices {
         private static final String URL_API_FAVOURITE = "https://api.thecatapi.com/v1/favourites";
 
         //Fetch random cat images and information
-        public void getRandomCatImage(Context context, Response.ErrorListener errorListener) {
+        public static void getRandomCatImage(Context context, CatObserver listener) {
             RequestQueue queue = Volley.newRequestQueue(context);
 
             StringRequest request = new StringRequest(Request.Method.GET, URL_API_SEARCH_IMAGE + URL_END_BREEDS + URL_END_API_KEY +  API_KEY,
@@ -69,12 +69,16 @@ public class ApiServices {
                                     cat.setEnergyLevel(breedsInfo.optInt("energy_level", 0));
                                     cat.setIntelligence(breedsInfo.optInt("intelligence", 0));
                                     cat.setSocialNeeds(breedsInfo.optInt("social_needs", 0));
+                                    listener.onReceiveCatInfo(cat);
                                 }
                             }
                         } catch (JSONException e) {
                             Log.e("ApiServices", "JSON parsing error: " + e.getMessage());
                         }
-                    }, errorListener);
+                    }, new Response.ErrorListener(){
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {}
+            });
 
             queue.add(request);
         }

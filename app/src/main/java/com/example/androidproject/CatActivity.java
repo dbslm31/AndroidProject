@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,11 +18,12 @@ import com.android.volley.Response;
 
 import java.util.ArrayList;
 
-public class CatActivity extends AppCompatActivity
+public class CatActivity extends AppCompatActivity implements View.OnClickListener
 
 {
 
     private ImageView imageView;
+    Button catButton;
 
 
 
@@ -36,6 +38,9 @@ public class CatActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat);
         textView = findViewById(R.id.textViewCatFact);
+
+        catButton = findViewById(R.id.randomCatBut);
+        catButton.setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +59,13 @@ public class CatActivity extends AppCompatActivity
                 );
         imageView = findViewById(R.id.imageViewCat);
         ApiServices.loadCatAvatar(this, cat, imageView);
+    }
+
+    @Override
+    public void onClick(View v) {
+        finish();
+        ApiServices.getRandomCatImage(this, (CatObserver) this);
+        startActivity(getIntent());
     }
 }
 
