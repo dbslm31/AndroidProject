@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:text="Cats and tea"
+        android:background="@color/milktea"
+        android:textColor="@color/coffee"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
+    <ListView
+        android:id="@+id/listViewCatFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
