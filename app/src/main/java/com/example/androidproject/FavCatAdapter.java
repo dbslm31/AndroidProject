@@ -42,18 +42,14 @@ public class FavCatAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView==null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_deputy, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_favcat, parent, false);
         }
-        TextView textViewName= convertView.findViewById(R.id.textViewItemDeputyName);
-        textViewName.setText(deputies.get(position).getFirstname()+
-                " "+deputies.get(position).getLastname());
-        TextView textViewCirco= convertView.findViewById(R.id.textViewItemDeputyCirco);
-        textViewCirco.setText(deputies.get(position).getDepartment()+", "+
-                deputies.get(position).getNameCirco()+ " "+ deputies.get(position).getNumCirco()+
-                (deputies.get(position).getNumCirco()==1? "er": "eme")+" circoncription");
+        TextView textViewName= convertView.findViewById(R.id.textViewCatFav);
+        textViewName.setText(cats.get(position).getName());
 
-        ImageView imageView= convertView.findViewById(R.id.imageViewItemDeputy);
-        ApiServices.loadDeputyAvatar(context, deputies.get(position).getNameForAvatar(), imageView);
+
+        ImageView imageView= convertView.findViewById(R.id.imageViewCatfav);
+        ApiServices.loadCatAvatar(context, cats.get(position), imageView);
         return convertView;
     }
 }

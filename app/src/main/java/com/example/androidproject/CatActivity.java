@@ -18,12 +18,11 @@ import com.android.volley.Response;
 
 import java.util.ArrayList;
 
-public class CatActivity extends AppCompatActivity implements View.OnClickListener
-
-{
+public class CatActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView imageView;
-    Button catButton;
+    Button catButton, favButton;
+    ImageView heartButton;
 
 
 
@@ -41,6 +40,10 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
 
         catButton = findViewById(R.id.randomCatBut);
         catButton.setOnClickListener(this);
+        favButton = findViewById(R.id.favcat);
+        favButton.setOnClickListener(this);
+        heartButton = findViewById(R.id.heart);
+        heartButton.setOnClickListener(this);
     }
 
     @Override
@@ -63,9 +66,22 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        finish();
-        ApiServices.getRandomCatImage(this, (CatObserver) this);
-        startActivity(getIntent());
+        if(v==catButton){
+            finish();
+            ApiServices.getRandomCatImage(this, (CatObserver) this);
+            Intent i = new Intent(getApplicationContext(),CatActivity.class);
+            startActivity(i);
+        }
+
+         else if(v==favButton){
+            Intent i = new Intent(getApplicationContext(),FavCatActivity.class);
+            startActivity(i);
+        }
+         else if(v==heartButton){
+            //ApiServices.getFavourites(this,this,this,this);
+        }
     }
+
+
 }
 

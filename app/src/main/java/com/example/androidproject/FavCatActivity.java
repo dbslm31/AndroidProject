@@ -24,16 +24,16 @@ public class FavCatActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_favorite);
 
-        searchView = findViewById(R.id.searchViewMain);
+        searchView = findViewById(R.id.searchViewCatFav);
         searchView.setOnQueryTextListener(this);
 
-        listView= findViewById(R.id.listViewMain);
+        listView= findViewById(R.id.listViewCatFav);
         cats= new ArrayList<Cat>();
 
         //adapter= new DeputyAdapter(deputies, this);
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
     }
 
@@ -62,8 +62,8 @@ public class FavCatActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent= new Intent(MainActivity.this, FavCatActivity.class);
-        setContentView(R.layout.activity_favcat);
+        Intent intent= new Intent(FavCatActivity.this, FavCatActivity.class);
+        setContentView(R.layout.activity_favorite);
         intent.putExtra("cat", cats.get(position));
         startActivity(intent);
     }

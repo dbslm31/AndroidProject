@@ -171,7 +171,7 @@ public class ApiServices {
     }
 
     //Get all favourites
-    public void getFavourites(Context context, String subId, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
+    public static void getFavourites(Context context, String subId, Response.Listener<String> responseListener, Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = URL_API_FAVOURITE;
         /* Si on a le temps de faire l'authentification
@@ -224,6 +224,61 @@ public class ApiServices {
                         imageView.setImageResource(android.R.drawable.ic_menu_gallery);
                     }
                 });
+        queue.add(request);
+    }
+
+    public static void searchRequest(Context context, String search, SearchObserver listener){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest request = new StringRequest( search ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject= new JSONObject(response);
+                            JSONArray jsonArray= jsonObject.getJSONArray("results");
+                            for(int i=0; i<jsonArray.length(); i++){
+                                JSONObject object= jsonArray.getJSONObject(i);
+                                if(object.getString("document_type").equals("Parlementaire")){
+                                    getCatInfo(context, object.getString("document_url"), listener);
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        queue.add(request);
+    }
+
+    public static void getCatInfo(Context context, String urlInfoVote, SearchObserver listener){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest request = new StringRequest(urlInfoVote,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject= new JSONObject(response);
+                            /*JSONObject jsonObjectVote= jsonObject.getJSONObject("cat");
+                            Cat cat= new Cat(jsonObjectVote.getInt("id"),
+                                    jsonObjectVote.getString("titre"),
+                                    jsonObjectVote.getString("position"),
+                                    jsonObjectVote.getString("date"));
+                            listener.onReceiveFavCatInfo(cat);*/
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
         queue.add(request);
     }
 

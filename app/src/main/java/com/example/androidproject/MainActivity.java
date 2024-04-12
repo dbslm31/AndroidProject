@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CatObserver {
 
 
-    Button catButton;
+    Button catButton, favButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         catButton = findViewById(R.id.randomCatBut);
         catButton.setOnClickListener(this);
+        favButton = findViewById(R.id.favcat);
+        favButton.setOnClickListener(this);
+
     }
 
 
@@ -50,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        ApiServices.getRandomCatImage(this, this);
+
+        if(v==catButton){
+            ApiServices.getRandomCatImage(this, this);}
+        else{
+            Intent i = new Intent(getApplicationContext(),FavCatActivity.class);
+            startActivity(i);
+        }
     }
 }
